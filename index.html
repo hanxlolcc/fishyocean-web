@@ -1,216 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FISHY OCEAN - kelompok 9/9F</title>
-    <link rel="icon" type="image/x-icon" href="fishbig.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FISHY OCEAN - kelompok 9/9F</title>
 
-        :root {
-            --blue: #376199;
-            --orange: #ff751f;
-            --cream: #fffede;
-            --white: #ffffff;
-            --bg-primary: #fffede;
-            --bg-secondary: #e8eac4;
-            --text-primary: #ff751f;
-            --text-secondary: #555555;
-            --accent: #376199;
-            --border: #d4d6b8;
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Poppins', -apple-system, sans-serif;
-        }
+<link rel="icon" type="image/x-icon" href="fishbig.ico">
 
-        html {
-            scroll-behavior: smooth;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        body {
-            font-family: var(--font-body);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .tiles-floor-wrapper{
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+
+--blue:#2f5f9e;
+--blue-soft:#eaf2fb;
+--orange:#ff7a2f;
+
+--cream:#fffaf0;
+--white:#ffffff;
+
+--bg-primary:#fffaf0;
+--bg-secondary:#eaf2fb;
+
+--text-primary:#ff7a2f;
+--text-secondary:#5c6470;
+
+--border:#dfe6ef;
+
+--font-body:'Poppins',sans-serif;
+
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:var(--font-body);
+background:var(--bg-primary);
+color:var(--text-primary);
+line-height:1.6;
+}
+
+
+/* NAVBAR */
+
+.navbar{
 position:fixed;
-bottom:0;
+top:0;
 left:0;
-width:100vw;
-height:40vh;
-overflow:hidden;
-z-index:0;
-pointer-events: none;
+right:0;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:1.2rem 3rem;
+
+background:rgba(255,250,240,0.95);
+backdrop-filter:blur(8px);
+
+border-bottom:1px solid var(--border);
+
+z-index:1000;
 }
 
-.tiles-floor{
+.nav-left{
+display:flex;
+align-items:center;
+gap:1rem;
+}
 
+.logo-img{
+height:80px;
+transition:0.4s;
+}
+
+.logo-img:hover{
+transform:scale(1.08) rotate(5deg);
+}
+
+.logo-tagline{
+color:var(--blue);
+font-size:20px;
+}
+
+.nav-center{
+display:flex;
+gap:2rem;
+}
+
+.nav-link{
+text-decoration:none;
+color:var(--text-primary);
+font-size:0.95rem;
+position:relative;
+}
+
+.nav-link::after{
+content:"";
 position:absolute;
-bottom:-150px;
-left:-40vw;
-width:180vw;
-height:100vh;
-
-background-image:
-linear-gradient(45deg,#376199 25%,transparent 25%),
-linear-gradient(-45deg,#376199 25%,transparent 25%),
-linear-gradient(45deg,transparent 75%,#376199 75%),
-linear-gradient(-45deg,transparent 75%,#376199 75%);
-
-background-size:140px 140px;
-background-position:0 0,0 70px,70px -70px,-70px 0px;
-
-background-color:#fffede;
-
-transform:perspective(1000px) rotateX(60deg);
-transform-origin:bottom;
-pointer-events: none;
+bottom:-4px;
+left:0;
+width:0%;
+height:2px;
+background:var(--orange);
+transition:0.3s;
 }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 4rem;
-            z-index: 1000;
-            background: rgba(255, 254, 222, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-        }
+.nav-link:hover::after{
+width:100%;
+}
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
 
-        .logo-img {
-            height: 90px;
-        }
+/* HERO */
 
-        .logo-tagline {
-            color: var(--blue);
-            font-size: 25px;
-            font-family: var(--font-body);
-            white-space: nowrap;
-        }
+.hero{
+min-height:100vh;
+display:flex;
+align-items:flex-end;
+position:relative;
+overflow:hidden;
+}
 
-        .nav-center {
-            display: flex;
-            gap: 3rem;
-        }
+.hero-bg-image{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
 
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 30px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
+.hero-bg-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--text-primary);
-            transition: width 0.3s ease;
-        }
+.hero-bg-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-bg-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to top,
-                rgba(255, 254, 222, 0.95) 0%,
-                rgba(255, 254, 222, 0.7) 30%,
-                rgba(255, 254, 222, 0.3) 60%,
-                transparent 100%
-            );
-            z-index: 1;
-        }
-        .hero-bg-overlay-2 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 254, 222, 0.95) 0%,
-                rgba(255, 254, 222, 0.7) 30%,
-                rgba(255, 254, 222, 0.3) 60%,
-                transparent 100%
-            );
-            z-index: 1;
-        }
-        .hero-bg-overlay-3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(
-    to top,
-    rgba(55, 97, 153, 1) 0%,
-    rgba(55, 97, 153, 0.7) 30%,
-    rgba(55, 97, 153, 0.3) 60%,
-    transparent 100%
+background:linear-gradient(
+to top,
+rgba(255,250,240,0.95) 0%,
+rgba(255,250,240,0.6) 40%,
+transparent 100%
 );
-            z-index: 1;
-        }
 
-        /* Animated Fish */
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:8rem 4rem;
+max-width:600px;
+}
+
+.hero-subtitle{
+font-size:0.8rem;
+letter-spacing:3px;
+text-transform:uppercase;
+color:var(--text-secondary);
+margin-bottom:1rem;
+}
+
+.hero-title{
+font-size:5rem;
+color:var(--blue);
+line-height:1;
+margin-bottom:2rem;
+}
+
+.title-line{
+display:block;
+font-size:clamp(60px,12vw,160px);
+}
+
+.title-outline{
+-webkit-text-stroke:1px var(--orange);
+color:transparent;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons{
+display:flex;
+gap:1rem;
+flex-wrap:wrap;
+}
+
+.preorder-btn{
+
+background:linear-gradient(135deg,var(--orange),#ff944f);
+
+color:white;
+text-decoration:none;
+
+padding:1rem 2rem;
+
+border-radius:40px;
+
+transition:0.3s;
+}
+
+.preorder-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.menu-link-btn{
+
+border:1px solid var(--orange);
+color:var(--orange);
+
+padding:1rem 2rem;
+
+border-radius:40px;
+
+text-decoration:none;
+}
+
+.menu-link-btn:hover{
+background:var(--orange);
+color:white;
+}
+
+
+/* ABOUT */
+
+.about-section{
+padding:6rem 2rem;
+background:var(--bg-secondary);
+text-align:center;
+}
+
+.about-container{
+max-width:900px;
+margin:auto;
+}
+
+.about-text{
+margin-top:1rem;
+color:var(--text-secondary);
+}
+
+.about-features{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:2rem;
+margin-top:3rem;
+}
+
+.feature{
+
+background:white;
+padding:2rem;
+
+border-radius:15px;
+
+border:1px solid var(--border);
+
+box-shadow:0 10px 25px rgba(47,95,158,0.08);
+
+}
+
+.feature h3{
+color:var(--blue);
+margin-bottom:0.5rem;
+}
+
+
+/* MENU */
+
+.menu-section{
+padding:6rem 2rem;
+background:var(--bg-primary);
+text-align:center;
+}
+
+.section-title{
+font-size:3rem;
+color:var(--blue);
+margin-bottom:3rem;
+}
+
+.menu-container{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+gap:3rem;
+
+max-width:1000px;
+margin:auto;
+
+}
+
+.menu-item{
+
+background:white;
+padding:2rem;
+
+border-radius:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.06);
+
+transition:0.3s;
+
+}
+
+.menu-item:hover{
+transform:translateY(-10px);
+}
+
+.menu-item-image{
+width:100%;
+height:260px;
+object-fit:cover;
+margin-bottom:1rem;
+border-radius:10px;
+}
+
+.menu-item-name{
+font-size:1.6rem;
+color:var(--blue);
+}
+
+.menu-item-desc{
+color:var(--text-secondary);
+margin:0.6rem 0;
+}
+
+.menu-item-price{
+font-size:1.2rem;
+color:var(--orange);
+}
+
+
+/* CONTACT */
+
+.contact-section{
+padding:5rem 2rem;
+text-align:center;
+background:var(--blue-soft);
+}
+
+.contact-section p{
+margin:1rem 0 2rem;
+color:var(--text-secondary);
+}
+
+
+/* FOOTER */
+
+footer{
+
+padding:2rem;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:1rem;
+
+background:linear-gradient(180deg,var(--blue),#1f467a);
+
+color:white;
+
+}
+
+.footer-logo{
+height:40px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.menu-container{
+grid-template-columns:1fr;
+}
+
+.about-features{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.navbar{
+flex-direction:column;
+gap:10px;
+padding:1rem;
+}
+
+.logo-tagline{
+display:none;
+}
+
+.hero{
+align-items:center;
+text-align:center;
+}
+
+.hero-content{
+padding:6rem 2rem;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+}
+
 .animated-fish {
             position: absolute;
             width: 250px;
@@ -257,8 +477,6 @@ pointer-events: none;
                 transform: translateY(-15px) rotate(2deg);
             }
         }
-
-        /* Adjust animation for smaller screens */
 @media (max-width: 768px) {
             .animated-fish {
                 width: 188px;
@@ -288,607 +506,156 @@ pointer-events: none;
                 }
             }
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 8rem 4rem 4rem;
-            max-width: 600px;
-        }
-
-        .hero-subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--blue);
-        }
-
-        .title-line {
-            display: block;
-            font-size: 180px;
-        }
-
-        .title-outline {
-            -webkit-text-stroke: 1px var(--orange);
-            color: transparent;
-        }
-
-        .hero-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 400px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            
-        }
-
-        .preorder-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--white);
-            font-size: 1rem;
-            padding: 1rem 2rem;
-            background: var(--orange);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .preorder-btn:hover {
-            background: var(--blue);
-        }
-
-        .menu-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--orange);
-            font-size: 1rem;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 1px solid var(--orange);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .menu-link-btn:hover {
-            background: var(--orange);
-            color: var(--white);
-        }
-
-        /* Menu Section */
-        .menu-section {
-            padding: 6rem 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--blue);
-        }
-
-        .menu-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            justify-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .menu-item {
-            background: var(--white);
-            padding: 2rem;
-            width: 400px;
-            border-radius: 20px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .menu-item-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            filter: grayscale(30%);
-            transition: filter 0.3s ease;
-        }
-
-        .menu-item:hover .menu-item-image {
-            filter: grayscale(0%);
-        }
-
-        .menu-item-name {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--blue);
-        }
-
-        .menu-item-desc {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .menu-item-price {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--orange);
-        }
-
-        .menu-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Preorder Section */
-        .preorder-section {
-            padding: 6rem 4rem;
-            position: relative;
-            z-index: 1;
-            background: var(--white);
-            margin-top: 2rem;
-        }
-
-        .preorder-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 4rem;
-            text-align: center;
-            background: #376199;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            
-        }
-
-        .footer-logo {
-            height: 40px;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-        }
-
-        footer p {
-            font-size: 1rem;
-            color: white;
-            font-weight: 500;
-            letter-spacing: 1px;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 15px rgba(255, 117, 31, 0.3);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 8px 25px rgba(255, 117, 31, 0.5);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(55, 97, 153, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(55, 97, 153, 0.6);
-            }
-        }
-
-        .hero-content {
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .menu-item {
-            animation: fadeInUp 0.8s ease forwards;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        .menu-item:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .menu-item:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        /* Preorder button animation */
-        .preorder-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--white);
-            font-size: 1rem;
-            padding: 1rem 2rem;
-            background: var(--orange);
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            border-radius: 50px;
-        }
-
-        .preorder-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .preorder-btn:hover {
-            background: var(--blue);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(55, 97, 153, 0.4);
-        }
-
-        .preorder-btn:hover::before {
-            left: 100%;
-        }
-
-        .preorder-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        /* Menu link button animation */
-        .menu-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--orange);
-            font-size: 1rem;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 1px solid var(--orange);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-link-btn:hover {
-            background: var(--orange);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 117, 31, 0.3);
-        }
-
-        /* Nav link animation */
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--orange);
-        }
-
-        /* Logo animation in navbar */
-        .logo-img {
-            height: 90px;
-            transition: transform 0.4s ease;
-        }
-
-        .logo-img:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* Section title animation */
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--blue);
-            display: inline-block;
-        }
-
-        /* Hero title animation */
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 5rem;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--blue);
-        }
-
-        .title-line {
-            display: block;
-            animation: slideInLeft 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        .title-line:nth-child(1) {
-            animation-delay: 0.3s;
-        }
-
-        .title-line:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .title-outline {
-            -webkit-text-stroke: 1px var(--orange);
-            color: transparent;
-        }
-
-        /* Responsive - Tablet and below */
-        @media (max-width: 1024px) {
-            .hero {
-                display: flex;
-                justify-content: center;
-                padding: 8rem 2rem 4rem;
-            }
-
-            .hero-content {
-                text-align: center;
-                padding: 0;
-            }
-
-            .hero-desc {
-                margin: 0 auto 3rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .menu-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo-img {
-                height: 60px;
-            }
-
-            .logo-tagline {
-                display: none;
-            }
-
-            .nav-center {
-                gap: 1.5rem;
-            }
-
-            .nav-link {
-                font-size: 0.85rem;
-            }
-
-            section {
-                padding: 4rem 2rem;
-            }
-
-            .menu-item {
-                width: 100%;
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <div class="tiles-floor-wrapper">
-   <div class="tiles-floor"></div>
+
+
+<nav class="navbar">
+
+<div class="nav-left">
+<img src="fishbig.png" class="logo-img">
+<span class="logo-tagline">Healthy habits, sweet life.</span>
 </div>
-    
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="fishbig.png" alt="FISHYOCEAN" class="logo-img">
-            <span class="logo-tagline">Healthy habits, sweet life.</span>
-        </div>
-        <div class="nav-center">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#menu" class="nav-link">Menu</a>
-        </div>
-    </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-bg-image">
-            <img src="fnc.jpg" alt="Featured Dish">
-        </div>
-        <div class="hero-bg-overlay"></div>
-        <img src="fishoceanface1.png" alt="Swimming Fish" class="animated-fish">
-        <div class="hero-content">
-            <p class="hero-subtitle">Pre-Order Now</p>
-            <h1 class="hero-title">
-                <span class="title-line">Fishy</span>
-                <span class="title-line title-outline">Ocean</span>
-            </h1>
-            <div class="hero-buttons">
-                <a class="preorder-btn" href="https://fishyocean-form.vercel.app" target="_blank">
-                    <span>Pre-Order Now</span>
-                </a>
-                <a href="#menu" class="menu-link-btn">
-                    <span>View Menu</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<div class="nav-center">
+<a href="#home" class="nav-link">Home</a>
+<a href="#menu" class="nav-link">Menu</a>
+</div>
 
-    <section class="menu-section" id="menu">
-        <div class="hero-bg-overlay-2"></div>
-        <div class="section-header">
-            <h2 class="section-title">Menu</h2>
-        </div>
-        
-        <div class="menu-container">
-            <div class="menu-item">
-                <span class="menu-label">Main Dish</span>
-                <img src="fnc.jpg" alt="Fish and Chips" class="menu-item-image">
-                <h3 class="menu-item-name">Fish & Chips</h3>
-                <p class="menu-item-desc">Ikan dori crispy dan kentang goreng renyah yang disajikan segar dengan cocolan saus yogurt lemon yang creamy.</p>
-                <div class="menu-item-price">Rp26.000,00-</div>
-            </div>
+</nav>
 
-            <div class="menu-item">
-                <span class="menu-label">Drink</span>
-                <img src="teh.jpg" alt="Teh Bunga Telang" class="menu-item-image">
-                <h3 class="menu-item-name">Teh Bunga Telang</h3>
-                <p class="menu-item-desc">Segelas teh bunga telang berwarna biru alami yang disajikan hangat atau dingin dengan aroma floral yang lembut dan menenangkan.</p>
-                <div class="menu-item-price">Rp7.000,00-</div>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a class="preorder-btn" style="border-radius: 50px; padding: 1.2rem 3rem; font-size: 1.2rem;" href="https://fishyocean-form.vercel.app" target="_blank">
-                <span>Pre-Order Now</span>
-            </a>
-        </div>
-        <div class="hero-bg-overlay-3"></div>
-    </section>
 
-    <footer>
-        
-        <img src="fishbig.png" alt="FISHYOCEAN" class="footer-logo">
-        <p>&copy; 2026 FISHY OCEAN</p>
-    </footer>
+<section class="hero" id="home">
+
+<div class="hero-bg-image">
+<img src="fnc.jpg">
+</div>
+
+<div class="hero-bg-overlay"></div>
+<img src="fishoceanface1.png" alt="Swimming Fish" class="animated-fish">
+<div class="hero-content">
+
+<p class="hero-subtitle">Pre Order Now</p>
+
+<h1 class="hero-title">
+<span class="title-line">Fishy</span>
+<span class="title-line title-outline">Ocean</span>
+</h1>
+
+<div class="hero-buttons">
+
+<a class="preorder-btn" href="https://fishyocean-form.vercel.app" target="_blank">
+Pre Order Now
+</a>
+
+<a href="#menu" class="menu-link-btn">
+View Menu
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="about-section">
+
+<div class="about-container">
+
+<h2 class="section-title">About Us</h2>
+
+<p class="about-text">
+Fishy Ocean adalah project makanan sehat yang dibuat oleh Kelompok 9 kelas 9F.
+Kami menyajikan hidangan ikan segar yang lezat, sehat, dan terjangkau untuk semua orang.
+</p>
+
+<div class="about-features">
+
+<div class="feature">
+<h3>Fresh Ingredients</h3>
+<p>Menggunakan ikan dan bahan segar berkualitas.</p>
+</div>
+
+<div class="feature">
+<h3>Healthy Food</h3>
+<p>Makanan sehat yang tetap lezat.</p>
+</div>
+
+<div class="feature">
+<h3>Student Project</h3>
+<p>Dibuat oleh siswa kelas 9C, D, J.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="menu-section" id="menu">
+
+<h2 class="section-title">Menu</h2>
+
+<div class="menu-container">
+
+<div class="menu-item">
+
+<img src="fnc.jpg" class="menu-item-image">
+
+<h3 class="menu-item-name">Fish & Chips</h3>
+
+<p class="menu-item-desc">
+Ikan dori crispy dan kentang goreng renyah dengan saus yogurt lemon creamy.
+</p>
+
+<div class="menu-item-price">Rp26.000</div>
+
+</div>
+
+
+<div class="menu-item">
+
+<img src="teh.jpg" class="menu-item-image">
+
+<h3 class="menu-item-name">Teh Bunga Telang</h3>
+
+<p class="menu-item-desc">
+Teh bunga telang berwarna biru alami dengan aroma floral yang lembut.
+</p>
+
+<div class="menu-item-price">Rp7.000</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="contact-section">
+
+<h2 class="section-title">Order Info</h2>
+
+<p>Pre-order sekarang melalui form kami.</p>
+
+<a class="preorder-btn" href="https://fishyocean-form.vercel.app" target="_blank">
+Order Now
+</a>
+
+</section>
+
+
+<footer>
+
+<img src="fishbig.png" class="footer-logo">
+
+<p>© 2026 FISHY OCEAN - made by @hanxlol and @nas</p>
+
+</footer>
+
 </body>
 </html>
-
-
