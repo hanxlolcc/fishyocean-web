@@ -507,6 +507,10 @@ justify-content:center;
                 }
             }
         }
+        img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
 </style>
 </head>
 
@@ -657,6 +661,16 @@ Order Now
 <p>© 2026 FISHY OCEAN - made by @hanxlol and @nas</p>
 
 </footer>
+<script>
+    document.addEventListener("contextmenu", function(e){
+  e.preventDefault();
+});
 
+document.addEventListener("touchstart", function(e){
+  if(e.target.tagName === "IMG"){
+    e.preventDefault();
+  }
+});
+</script>
 </body>
 </html>
